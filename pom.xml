@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ant</groupId>
+    <artifactId>partronum</artifactId>
+    <packaging>pom</packaging>
+    <version>V1.0</version>
+    <modules>
+        <module>partronum-core</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <logstash.version>6.1</logstash.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <yaml.version>1.0.8</yaml.version>
+        <google.guava.version>23.0</google.guava.version>
+    </properties>
+
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

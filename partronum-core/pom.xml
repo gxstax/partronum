@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>partronum</artifactId>
+        <groupId>com.ant</groupId>
+        <version>V1.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>partronum-core</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.forward/yaml -->
+        <dependency>
+            <groupId>io.forward</groupId>
+            <artifactId>yaml</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+        <!-- Google guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+
+
+    </dependencies>
+
+</project>
