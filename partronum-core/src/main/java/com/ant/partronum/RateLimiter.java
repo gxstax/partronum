@@ -2,16 +2,14 @@ package com.ant.partronum;
 
 import com.ant.partronum.alg.FixedTimeWinRateLimitAlg;
 import com.ant.partronum.alg.RateLimitAlg;
+import com.ant.partronum.exceptions.InternalErrorException;
 import com.ant.partronum.rule.ApiLimit;
 import com.ant.partronum.rule.RateLimitRule;
 import com.ant.partronum.rule.RuleConfig;
 import com.ant.partronum.rule.TrieRateLimitRule;
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.IOException;
-import java.io.InputStream;
+import com.ant.partronum.rule.datasource.FileRuleConfigSource;
+import com.ant.partronum.rule.datasource.RuleConfigSource;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -23,35 +21,22 @@ import java.util.logging.Logger;
  * @since 2020/6/3 9:12 上午
  */
 public class RateLimiter {
+
     private static final Logger log = Logger.getLogger(RateLimiter.class.getName());
 
-    // 为每个api在内存中存储限流计数器 (key: AppId + api)
+    // 为每个api在内存中存储限流计数器
     private ConcurrentHashMap<String, RateLimitAlg> counters = new ConcurrentHashMap<>();
 
-    // 限流规则
     private RateLimitRule rule;
 
-    // 读取限流规则
     public RateLimiter() {
-        // 从配置文件中读取配置信息
-        RuleConfig ruleConfig = null;
-        try (InputStream resourceStream =
-                     this.getClass().getResourceAsStream("META-INF/ratelimiter-rule.yaml")) {
-            if (null != resourceStream) {
-                Yaml yaml = new Yaml();
-                ruleConfig = yaml.loadAs(resourceStream, RuleConfig.class);
-            }
-        } catch (IOException e) {
-            log.log(Level.WARNING, "读取配置失败", e);
-        }
-
-        // 将限流规则构建成支持快速查找的数据结构 RateLimitRule
+        // 调用RuleConfigSource类来实现配置加载
+        RuleConfigSource configSource = new FileRuleConfigSource();
+        RuleConfig ruleConfig = configSource.load();
         this.rule = new TrieRateLimitRule(ruleConfig);
     }
 
-    // 判断是否需要限流
-
-    public boolean limit(String appId, String api) {
+    public boolean limit(String appId, String api) throws InternalErrorException {
         ApiLimit apiLimit = rule.getLimit(appId, api);
         if (null == apiLimit) {
             return true;
