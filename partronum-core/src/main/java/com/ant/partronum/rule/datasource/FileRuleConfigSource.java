@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * 基于文件格式的数据源
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 6:38 下午
  */
 public class FileRuleConfigSource implements RuleConfigSource {

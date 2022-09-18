@@ -7,7 +7,7 @@ import java.util.List;
  * 应用限流配置
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2020/6/5 8:32 上午
  */
 public class AppRuleConfig {

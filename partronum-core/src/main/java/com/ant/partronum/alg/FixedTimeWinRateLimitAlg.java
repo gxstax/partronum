@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 基于滑动时间窗口限流算法类
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 6:13 下午
  */
 public class FixedTimeWinRateLimitAlg implements RateLimitAlg {

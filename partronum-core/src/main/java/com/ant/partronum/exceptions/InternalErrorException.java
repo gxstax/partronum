@@ -5,7 +5,7 @@ package com.ant.partronum.exceptions;
  * 自定义内部异常
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 5:50 下午
  */
 public class InternalErrorException extends RuntimeException{

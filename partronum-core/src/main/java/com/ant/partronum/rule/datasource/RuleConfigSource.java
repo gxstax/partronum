@@ -7,17 +7,17 @@ import com.ant.partronum.rule.RuleConfig;
  * 配置文件数据源接口
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 6:37 下午
  */
 public interface RuleConfigSource {
-    
+
     /**
      * <p>
      * 加载配置
      * </p>
      *
-     * @param 
+     * @param
      * @return {@link RuleConfig}
      */
     RuleConfig load();

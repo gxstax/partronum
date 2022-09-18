@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * 应用配置
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 6:00 下午
  */
 public class TrieRateLimitRule implements RateLimitRule {

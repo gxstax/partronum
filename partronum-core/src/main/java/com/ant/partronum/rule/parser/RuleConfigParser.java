@@ -9,11 +9,11 @@ import java.io.InputStream;
  * 限流配置解析接口
  * </p>
  *
- * @author GaoXin
+ * @author Ant
  * @since 2021/9/25 6:02 下午
  */
 public interface RuleConfigParser {
-    
+
     /**
      * <p>
      * 基于配置文件路径解析规则
@@ -23,7 +23,7 @@ public interface RuleConfigParser {
      * @return {@link RuleConfig}
      */
     RuleConfig parse(String configText);
-    
+
     /**
      * <p>
      * 基于输入流解析规则
