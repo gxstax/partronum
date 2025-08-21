@@ -32,6 +32,7 @@ public class TrieRateLimitRule implements RateLimitRule {
         return limit.get();
     }
 
+    @Override
     public ApiLimit getLimit(String appId, String api) {
         for (AppRuleConfig config : this.ruleConfig.getConfigs()) {
             if (config.getAppId().equals(appId)) {

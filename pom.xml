@@ -17,6 +17,7 @@
     <version>V1.0</version>
     <modules>
         <module>partronum-core</module>
+        <module>partronum-spring-starter</module>
     </modules>
 
     <properties>

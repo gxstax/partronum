@@ -1,6 +1,7 @@
 package com.ant.partronum.properties;
 
 
+import com.ant.partronum.rule.RuleConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -15,6 +16,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class PartronumProperties {
 
     private Boolean enable = false;
+
+    private RuleConfig ruleConfig;
+
+    public void setRuleConfig(RuleConfig ruleConfig) {
+        this.ruleConfig = ruleConfig;
+    }
+
+    public RuleConfig getRuleConfig() {
+        return ruleConfig;
+    }
 
     public PartronumProperties() {}
 

@@ -30,11 +30,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.forward/yaml -->
-        <dependency>
-            <groupId>io.forward</groupId>
-            <artifactId>yaml</artifactId>
-            <version>1.0.8</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.forward</groupId>-->
+<!--            <artifactId>yaml</artifactId>-->
+<!--            <version>1.0.8</version>-->
+<!--        </dependency>-->
 
         <!-- Google guava -->
         <dependency>
