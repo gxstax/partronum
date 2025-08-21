@@ -1,6 +1,7 @@
 package com.ant.partronum.alg;
 
 import com.ant.partronum.exceptions.InternalErrorException;
+import com.ant.partronum.rule.ApiLimit;
 import com.google.common.base.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
@@ -27,10 +28,13 @@ public class FixedTimeWinRateLimitAlg implements RateLimitAlg {
 
     private final Integer limit;
 
+    private final Integer unit;
+
     private Lock lock = new ReentrantLock();
 
-    public FixedTimeWinRateLimitAlg (Integer limit) {
-        this.limit = limit;
+    public FixedTimeWinRateLimitAlg (ApiLimit apiLimit) {
+        this.limit = apiLimit.getLimit();
+        this.unit = apiLimit.getUnit();
     }
 
     @Override
@@ -44,7 +48,7 @@ public class FixedTimeWinRateLimitAlg implements RateLimitAlg {
             if (lock.tryLock(TRY_LOCK_TIMEOUT, TimeUnit.SECONDS)) {
                 try {
                     // 超过一秒则重置
-                    if (stopwatch.elapsed(TimeUnit.MILLISECONDS) > TimeUnit.SECONDS.toMillis(1)) {
+                    if (stopwatch.elapsed(TimeUnit.MILLISECONDS) > TimeUnit.MILLISECONDS.toMillis(unit)) {
                         currentCount.set(0);
                         stopwatch.reset();
                     }

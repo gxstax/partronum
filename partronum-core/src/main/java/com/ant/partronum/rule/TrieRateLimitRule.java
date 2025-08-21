@@ -18,19 +18,19 @@ public class TrieRateLimitRule implements RateLimitRule {
         this.ruleConfig = ruleConfig;
     }
 
-    public boolean limit(String appId, String api) {
-        AtomicBoolean limit = new AtomicBoolean(false);
-        ruleConfig.getConfigs().stream().forEach(config -> {
-            if (config.getAppId().equals(appId)) {
-                for (ApiLimit apiLimit : config.getLimits()) {
-                    if (apiLimit.getApi().equals(api)) {
-                        limit.set(true);
-                    }
-                }
-            }
-        });
-        return limit.get();
-    }
+//    public boolean limit(String appId, String api) {
+//        AtomicBoolean limit = new AtomicBoolean(false);
+//        ruleConfig.getConfigs().stream().forEach(config -> {
+//            if (config.getAppId().equals(appId)) {
+//                for (ApiLimit apiLimit : config.getLimits()) {
+//                    if (apiLimit.getApi().equals(api)) {
+//                        limit.set(true);
+//                    }
+//                }
+//            }
+//        });
+//        return limit.get();
+//    }
 
     @Override
     public ApiLimit getLimit(String appId, String api) {

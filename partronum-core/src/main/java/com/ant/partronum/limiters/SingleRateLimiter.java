@@ -59,7 +59,7 @@ public class SingleRateLimiter implements RateLimiter {
         String limitKey = String.format("%S:%S", appId, api);
         RateLimitAlg rateLimitAlg = counters.get(limitKey);
         if (null == rateLimitAlg) {
-            RateLimitAlg newRateLimitAlg = new FixedTimeWinRateLimitAlg(apiLimit.getLimit());
+            RateLimitAlg newRateLimitAlg = new FixedTimeWinRateLimitAlg(apiLimit);
             rateLimitAlg = counters.putIfAbsent(limitKey, newRateLimitAlg);
             if (null == rateLimitAlg) {
                 rateLimitAlg = newRateLimitAlg;
