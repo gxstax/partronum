@@ -35,12 +35,13 @@ public class FixedTimeWinRateLimitAlg implements RateLimitAlg {
     public FixedTimeWinRateLimitAlg (ApiLimit apiLimit) {
         this.limit = apiLimit.getLimit();
         this.unit = apiLimit.getUnit();
+        this.stopwatch = Stopwatch.createStarted();
     }
 
     @Override
     public boolean tryAcquire() {
         int updateCount = currentCount.incrementAndGet();
-        if (updateCount <= limit) {
+        if (updateCount >= limit) {
             return true;
         }
 
@@ -51,9 +52,10 @@ public class FixedTimeWinRateLimitAlg implements RateLimitAlg {
                     if (stopwatch.elapsed(TimeUnit.MILLISECONDS) > TimeUnit.MILLISECONDS.toMillis(unit)) {
                         currentCount.set(0);
                         stopwatch.reset();
+                        stopwatch.start();
                     }
                     updateCount = currentCount.incrementAndGet();
-                    return updateCount <= limit;
+                    return updateCount >= limit;
                 } finally {
                     lock.unlock();
                 }

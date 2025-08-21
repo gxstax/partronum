@@ -53,7 +53,7 @@ public class SingleRateLimiter implements RateLimiter {
     public boolean limit(String appId, String api) throws InternalErrorException {
         ApiLimit apiLimit = rule.getLimit(appId, api);
         if (null == apiLimit) {
-            return true;
+            return false;
         }
 
         String limitKey = String.format("%S:%S", appId, api);

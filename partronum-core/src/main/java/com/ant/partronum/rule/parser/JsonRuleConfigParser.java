@@ -1,5 +1,9 @@
 package com.ant.partronum.rule.parser;
 
+import com.ant.partronum.rule.RuleConfig;
+
+import java.io.InputStream;
+
 /**
  * <p>
  * 限流配置解析接口（json 格式配置）
@@ -10,4 +14,13 @@ package com.ant.partronum.rule.parser;
  */
 public class JsonRuleConfigParser implements RuleConfigParser {
 
+    @Override
+    public RuleConfig parse(String configText) {
+        return null;
+    }
+
+    @Override
+    public RuleConfig parse(InputStream in) {
+        return null;
+    }
 }

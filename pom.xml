@@ -18,6 +18,7 @@
     <modules>
         <module>partronum-core</module>
         <module>partronum-spring-starter</module>
+        <module>partronum-test</module>
     </modules>
 
     <properties>
